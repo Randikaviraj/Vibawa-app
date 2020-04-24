@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Dimensions,View,StyleSheet,Text,TextInput,TouchableOpacity} from 'react-native';
+import {Dimensions,View,StyleSheet,Text,TextInput,TouchableOpacity,AsyncStorage} from 'react-native';
 import Animated,{Easing, Extrapolate} from 'react-native-reanimated';
 import {TapGestureHandler,State} from 'react-native-gesture-handler';
 import Svg,{Image,Circle,ClipPath} from 'react-native-svg'
@@ -53,6 +53,9 @@ export default class Main extends Component{
     constructor(){
         super();
         this.btnopacity=new Value(1);
+
+        this.loginState = false;
+        this.loading = true;
 
         this.handleStateChange=event([
             {
@@ -109,6 +112,26 @@ export default class Main extends Component{
         
     }
     
+    componentDidMount(){
+        this._loadData()
+    }
+
+    _loadData=async()=>{
+        const IsLoggedin=await AsyncStorage.getItem('IsLoggedin')
+        console.log(IsLoggedin)
+        if(IsLoggedin==='1'){
+            console.log('oooooo')
+            this.loading = false;
+            this.loginState=true;
+            this.props.navigation.navigate('Home')
+        }else{
+            this.loading = false;
+            this.loginState=false;
+        }
+    }
+
+    
+
     handleSignup=()=>{
         this.props.navigation.navigate('Signup')
     }
@@ -118,6 +141,49 @@ export default class Main extends Component{
     }
 
     render(){
+        if(this.loading){
+            
+        return(
+            <View style={{flex:1,backgroundColor:'white',justifyContent:'flex-end'}}>
+                <Animated.View style={{...StyleSheet.absoluteFill,translateY:this.bgy}}>
+                    <Svg height={height+50} width={width}>
+                    <ClipPath id='id'>
+                        <Circle r={height+50} cx={width/2}/>
+                    </ClipPath>
+                    <Image
+                    href={require('../assets/images/mainbackground.jpeg')}
+                    height={height+50} width={width}
+                    preserveAspectRatio='xMidYMid  slice'
+                    clipPath='url(#id)'
+                    />
+                    </Svg>
+                </Animated.View>
+                <View style={{height:height / 8,}}>
+                    <TapGestureHandler>
+                    <Animated.View style={{...styles.button,backgroundColor:'#f7e6ff',opacity:this.btnopacity,transform:[{translateY:this.btny}],height:50,}}>
+                        <Text style={{fontSize:20,fontWeight:'bold'}}>Loading</Text>
+                    </Animated.View>
+                    </TapGestureHandler>
+                   
+
+                    {/* <Animated.View style={{height:height/3,...StyleSheet.absoluteFill,top:null,justifyContent:"center",zIndex:this.signinzindex,opacity:this.signinopcty,translateY:this.signiny}}>
+                        <TapGestureHandler onHandlerStateChange={this.onCloseState}>
+                            <Animated.View style={styles.close}>
+                                <Animated.Text style={{fontSize:20,transform:[{rotate:concat(this.rotatex,'deg')}]}}>X</Animated.Text>
+                            </Animated.View>
+                        </TapGestureHandler>
+                        <TouchableOpacity style={{...styles.button,backgroundColor:'#99ffff',borderColor:'#00e6e6',borderWidth:1}} onPress={this.handleSignin}>
+                            <Text style={{fontSize:20,fontWeight:'bold',color:'white'}}>SIGN IN</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{...styles.button,borderWidth:0.3,}} onPress={this.handleSignup}>
+                            <Text style={{fontSize:13,fontWeight:'bold',}}>SIGN UP</Text>
+                        </TouchableOpacity>
+                    </Animated.View> */}
+                </View>
+                
+            </View>
+        )
+        }
         return(
             <View style={{flex:1,backgroundColor:'white',justifyContent:'flex-end'}}>
                 <Animated.View style={{...StyleSheet.absoluteFill,translateY:this.bgy}}>
@@ -136,7 +202,7 @@ export default class Main extends Component{
                 <View style={{height:height / 8,}}>
                     <TapGestureHandler onHandlerStateChange={this.handleStateChange}>
                     <Animated.View style={{...styles.button,backgroundColor:'#f7e6ff',opacity:this.btnopacity,transform:[{translateY:this.btny}],height:50,}}>
-                        <Text style={{fontSize:20,fontWeight:'bold'}}>OooPs</Text>
+                        <Text style={{fontSize:20,fontWeight:'bold'}}>Go</Text>
                     </Animated.View>
                     </TapGestureHandler>
                    
@@ -153,8 +219,6 @@ export default class Main extends Component{
                         <TouchableOpacity style={{...styles.button,borderWidth:0.3,}} onPress={this.handleSignup}>
                             <Text style={{fontSize:13,fontWeight:'bold',}}>SIGN UP</Text>
                         </TouchableOpacity>
-                        
-                        
                     </Animated.View>
                 </View>
                 

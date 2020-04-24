@@ -60,12 +60,12 @@ render(){
 
                     >
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{height:Dimensions.get('window').height/2}}  scrollEventThrottle={16} snapToAlignment='center'>
-                        <Block width={Dimensions.get('window').width/2} height={Dimensions.get('window').height/2}/>
-                        <Block width={Dimensions.get('window').width/2} height={Dimensions.get('window').height/2}/>
-                        <Block width={Dimensions.get('window').width/2} height={Dimensions.get('window').height/2}/>
-                        <Block width={Dimensions.get('window').width/2} height={Dimensions.get('window').height/2}/>
-                        <Block width={Dimensions.get('window').width/2} height={Dimensions.get('window').height/2}/>
-                        <Block width={Dimensions.get('window').width/2} height={Dimensions.get('window').height/2}/>
+                        <Block width={Dimensions.get('window').width/2} height={Dimensions.get('window').height/3}/>
+                        <Block width={Dimensions.get('window').width/2} height={Dimensions.get('window').height/3}/>
+                        <Block width={Dimensions.get('window').width/2} height={Dimensions.get('window').height/3}/>
+                        <Block width={Dimensions.get('window').width/2} height={Dimensions.get('window').height/3}/>
+                        <Block width={Dimensions.get('window').width/2} height={Dimensions.get('window').height/3}/>
+                        <Block width={Dimensions.get('window').width/2} height={Dimensions.get('window').height/3}/>
                         
                         </ScrollView>
                         <Block width={Dimensions.get('window').width} height={Dimensions.get('window').height/2}/>

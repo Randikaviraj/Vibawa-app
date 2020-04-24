@@ -152,7 +152,7 @@ export default class SignUp extends ValidationComponent{
 getSignUp=async (data)=>{
         
     
-             fetch('http://192.168.42.127:3330/user/signup',{
+             fetch('http://192.168.1.103:3330/user/signup',{
                 method:'POST',
                 body: JSON.stringify({ 
                     fname:data.fname,

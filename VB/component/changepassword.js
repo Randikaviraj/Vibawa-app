@@ -114,7 +114,7 @@ export default class ChangePassword extends ValidationComponent{
 getUpdate=async (data)=>{
         
             
-             fetch('http://192.168.42.127:3330/user/changepassword',{
+             fetch('http://192.168.1.103:3330/user/changepassword',{
                 method:'POST',
                 body: JSON.stringify({ 
                     email:this.props.navigation.getParam('email'),

@@ -166,7 +166,7 @@ export default class ForgetPass extends ValidationComponent{
         let num=((Math.round(Math.random() * 10)+5)*100+(Math.round(Math.random() * 10)*2+7)*100)*12547
         this.setState({num:num.toString()})
         try{
-                 fetch('http://192.168.42.127:3330/user/forgetemail',{
+                 fetch('http://192.168.1.103:3330/user/forgetemail',{
                     method:'POST',
                     body: JSON.stringify({ 
                         email:data.email,
@@ -200,7 +200,7 @@ export default class ForgetPass extends ValidationComponent{
         renewPassword=async (data)=>{
         
             
-            fetch('http://192.168.42.127:3330/user/changepassword',{
+            fetch('http://192.168.1.103:3330/user/changepassword',{
                method:'POST',
                body: JSON.stringify({ 
                    email:data.email,

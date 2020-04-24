@@ -7,7 +7,7 @@ export default function Block(props){
         <View style={{flex:1,paddingHorizontal:10,marginHorizontal:11,marginVertical:10,height:props.height,
         width:props.width-15}}>
             <Card style={{flex:1}}>
-            <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+            <Card.Cover style={{height:150}} source={{ uri: 'https://picsum.photos/700' }} />
             <Card.Content>
                 <Title style={{fontSize:15,fontWeight:'500'}}>Card title</Title>
                 <Paragraph>Card content fffffffffffffffffffffffffffffffffffffffffffffffffffffff</Paragraph>

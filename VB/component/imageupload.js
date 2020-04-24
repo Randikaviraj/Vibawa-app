@@ -84,7 +84,7 @@ export default class ImageUpload extends Component {
       }
     };
     
-    fetch('http://192.168.42.127:3330/user/uploadimage',options
+    fetch('http://192.168.1.103:3330/user/uploadimage',options
     ).then((res)=>res.json()).then(
        (response)=>{
            
