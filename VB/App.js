@@ -11,7 +11,7 @@ import watchSaga from './saga/saga'
 import PostInfo from './component/postinfo'
 import Heart from './component/hearts'
 import ForgetPassword from './component/forgetpassword'
-
+import {colorCode} from './assets/colorcode'
 const sagaMiddleware = createSagaMiddleware()
 
 
@@ -62,7 +62,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colorCode(0),
     
   },
 });
