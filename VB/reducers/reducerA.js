@@ -5,7 +5,11 @@ const initialState={
     password:'',
     isloaded:'',
     errormsg:'',
-    blogdata:{}
+    blogdata:{},
+    magazineCovers:{},
+    magazineCatagory:{},
+    magazineArticles:{}
+
 }
 
 const reducer=(state=initialState,action)=>{
@@ -29,6 +33,18 @@ const reducer=(state=initialState,action)=>{
     if(action.type==='SaveBlogData'){
         
         newState.blogdata=action.data
+    }
+    if(action.type==='MagazineCoverssave'){
+        
+        newState.magazineCovers=action.data
+    }
+    if(action.type==='ContentMagzineSave'){
+        
+        newState.magazineCatagory=action.data
+    }
+    if(action.type==='ArticleMagzineSave'){
+        
+        newState.magazineArticles=action.data
     }
 
     return newState

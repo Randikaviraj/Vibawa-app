@@ -1,6 +1,5 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import  {View,Text,} from 'react-native';
 import Article from '../component/articles'
 import Radio from '../component/radio'
 import Profile from '../component/profile'
@@ -9,8 +8,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import {colorCode} from '../assets/colorcode'
 import { TabBar } from "react-native-animated-nav-tab-bar";
-import bloger from '../component/bloger';
-import Blogger from '../component/bloger'
+
+
 const Tab = createBottomTabNavigator();
 
 const Tabs = createBottomTabNavigator();
@@ -30,9 +29,6 @@ export default function App() {
                 // colors = focused ? 'red' : 'white';
                 return (<Ionicons name='md-radio' size={size} color={color} />
                     );
-              }else if (route.name === 'Blogger') {
-                // colors = focused ? 'red' : 'white';
-                return (<FontAwesome5 name='user' size={size} color={color} />);
               }else if (route.name === 'Profile') {
                 // colors = focused ? 'red' : 'white';
                 return (<FontAwesome5 name='user' size={size} color={color} />);
@@ -41,10 +37,6 @@ export default function App() {
             },
           })}
 
-          // tabBarOptions={{
-          //   activeTintColor: colorCode[0],
-          //   inactiveTintColor: '#e67300',
-          // }}
  
           tabBar={props => (
             <TabBar
@@ -56,11 +48,9 @@ export default function App() {
         >
           
           <Tabs.Screen name="Home" component={Article} />
-          <Tabs.Screen name="Blogger" component={Blogger} />
-
           <Tabs.Screen name="Radio" component={Radio} />
           <Tabs.Screen name="Profile" component={Profile} />
-          
+
         </Tabs.Navigator>
       </NavigationContainer>
     );

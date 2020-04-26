@@ -147,6 +147,36 @@ router.post('/forgetemail',(req,res)=>{
 })
 
 
+router.post('/confirmemail',(req,res)=>{
+    
+
+    var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'nilminisenanayakesuba@gmail.com',
+        pass: 'asd'
+    }
+    });
+
+    var mailOptions = {
+    from: 'youremail@gmail.com',
+    to: req.body.email,
+    subject: 'Email confirmatiom',
+    text: 'Your email confirmation code is'+req.body.num
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+        console.log('Error in sending email '+error);
+        res.status(400).send(JSON.stringify({statusrenew:false,network:false}));
+    } else {
+        console.log('Email sent: ' + info.response);
+        res.send(JSON.stringify({statusrenew:true,network:true}));
+    }
+    }); 
+})
+
+
 router.get('/profilepic', function (req, res) {
    
     res.sendFile(path.resolve('../uploads/randikavirajmax@gmail.jpg'));

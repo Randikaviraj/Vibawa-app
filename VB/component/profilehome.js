@@ -16,6 +16,7 @@ class ProfileHome extends Component{
         Alert.alert('LogOut','Do you want to logout ?',[{text: 'Yes', onPress: async() => 
         {
             await AsyncStorage.setItem('IsLoggedin','0');
+            this.props.navigation.navigate('Logout')
             BackHandler.exitApp()
         }, style: 'cancel'},
         {text: 'No', onPress: () => console.log('Cancel Pressed'), style: 'cancel'}])
@@ -126,7 +127,8 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       alignItems:'center',
       justifyContent:'center',
-      padding:28
+      paddingTop:5,
+      paddingHorizontal:10
     },
     profile:{
         width:200,
