@@ -166,13 +166,13 @@ getUpdate=async (data)=>{
                                     <TextInput style={styles.inputbox} 
                                         autoCapitalize='none'
                                         onChangeText={(val)=>{this.setState({password:val})}}
-                                        underlineColorAndroid='rgba(0,0,0,0)' secureTextEntry={true}
-                                        placeholder="New Password" placeholderTextColor="#ffffff"/>
+                                        underlineColorAndroid='black' secureTextEntry={true}
+                                        placeholder="New Password" placeholderTextColor="black"/>
                                      <TextInput style={styles.inputbox} 
                                         autoCapitalize='none'
                                         onChangeText={(val)=>{this.setState({repassword:val})}}
-                                        underlineColorAndroid='rgba(0,0,0,0)' secureTextEntry={true}
-                                        placeholder="Confirm Password" placeholderTextColor="#ffffff"/>
+                                        underlineColorAndroid='black' secureTextEntry={true}
+                                        placeholder="Confirm Password" placeholderTextColor="black"/>
                                         
                                         
                                         <View style={{marginTop:50}}>
@@ -214,7 +214,7 @@ const styles=StyleSheet.create({
         borderRadius:25,
         fontSize:16,
         paddingHorizontal:16,
-        color:'#ffffff',
+        color:'black',
         marginTop:20,
         padding:10
     },

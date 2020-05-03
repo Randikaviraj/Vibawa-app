@@ -2,7 +2,11 @@ const express=require('express')
 const mongoose=require("mongoose");
 const _ = require('lodash');
 const bcrypt=require('bcrypt');
+const fs = require('fs')
+const url = require('url');
+
 const {User}=require('../models/user')
+
 const router=express.Router();
 var nodemailer = require('nodemailer');
 var multer  = require('multer')
@@ -26,13 +30,12 @@ router.post('/changepassword',(req,res)=>{
     var password= bcrypt.hashSync(req.body.password, 10);
    
     User.findOneAndUpdate({email:req.body.email}, { password:password }, function(err, result) {
-        console.log(req.body.email)
-        console.log(password )
+      
         if (err) {
             console.log(err)
             res.status(400).send(JSON.stringify({status:false,network:true}));
         } else {
-          console.log(result)
+          
 
           res.send(JSON.stringify({status:true,network:true}));
         }
@@ -49,7 +52,7 @@ router.post('/signup',(req,res)=>{
    }
    
     const user=new User(data)
-    console.log(user)
+    
     user.save().then((user)=>{
         if(user){
             res.send({statussignup:true,network:true})
@@ -65,12 +68,12 @@ router.post('/signup',(req,res)=>{
 
 router.post('/login',(req,res)=>{
 
-        console.log(req.body.email)
+        
         User.find({email:req.body.email}).then(doc=>{
             if(!_.isEmpty(doc)){
-                    console.log(doc)
+                    
                     bcrypt.compare(req.body.password, doc[0].password).then(function(result) {
-                        console.log(result)
+                        
                             if(result){
                                 let temp={
                                     user:doc[0],
@@ -92,7 +95,7 @@ router.post('/uploadimage',upload.single('photo'),(req,res,next)=>{
 
     try{
         
-        console.log(req.file)
+        
         res.send(JSON.stringify({status:true,network:true}));
           
     }catch(err){
@@ -110,7 +113,7 @@ router.post('/updateprofile',(req,res)=>{
             console.log(err)
             res.status(400).send(JSON.stringify({status:false,network:true}));
         } else {
-          console.log(result)
+          
 
           res.send(JSON.stringify({status:true,network:true}));
         }
@@ -177,9 +180,37 @@ router.post('/confirmemail',(req,res)=>{
 })
 
 
-router.get('/profilepic', function (req, res) {
-   
-    res.sendFile(path.resolve('../uploads/randikavirajmax@gmail.jpg'));
-});
+router.post('/savefilename',(req,res)=>{
+    User.findOneAndUpdate({email:req.body.email},{filename:req.body.filename,}, function(err, result){
+        if (err) {
+            console.log(err)
+            res.status(400).send(JSON.stringify({status:false}));
+        } else {
+          console.log(result)
+
+          res.send(JSON.stringify({status:true}));
+        }
+      });
+})
+
+
+
+router.post('/getfilename',(req,res)=>{
+
+    console.log(req.body.email)
+    User.find({email:req.body.email}).then(doc=>{
+        if(!_.isEmpty(doc)){
+            console.log('get file name'+doc[0].filename)
+            res.send(JSON.stringify({filename : doc[0].filename}))
+
+        }else{  
+            res.status(400).send(JSON.stringify({filename:'err'}))
+        }
+                
+    }).catch(err=>{
+        console.log('Eror is in here getfilename '+err)
+    });
+})
+
 
 module.exports=router;

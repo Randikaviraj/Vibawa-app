@@ -1,8 +1,9 @@
 import React,{Component} from 'react';
-import  {View,Text,SafeAreaView,Dimensions,AsyncStorage,BackHandler,Alert,ActivityIndicator,FlatList,TouchableOpacity} from 'react-native';
+import  {View,Text,SafeAreaView,Dimensions,AsyncStorage,BackHandler,Alert,ActivityIndicator,FlatList,TouchableOpacity,Vibration, Platform} from 'react-native';
 import Block from './block'
 import {connect} from 'react-redux'
 import {Foundation } from '@expo/vector-icons';
+
 
 
 class MagazineHome extends Component{
@@ -18,24 +19,18 @@ class MagazineHome extends Component{
         this.loadedfaild=false
     }
 
+    
+
     backAction = () => {
-        Alert.alert("Log Out!", "Are you sure you want to log out?", [
-          {
-            text: "Cancel",
-            onPress: () => null,
-            style: "cancel"
-          },
-          { text: "YES", onPress: async() => {
-            await AsyncStorage.setItem('IsLoggedin','0');
-            this.props.navigation.navigate('Login')
-          } }
-        ]);
+        
         return true;
     };
 
     componentDidMount(){
+        
         BackHandler.addEventListener("hardwareBackPress", this.backAction);
         this.getdata()
+        
        
     }
 
@@ -43,8 +38,9 @@ class MagazineHome extends Component{
     const fname=await AsyncStorage.getItem('fname')
     const lname=await AsyncStorage.getItem('lname')
     const email=await AsyncStorage.getItem('email')
-    console.log(fname)
+
     this.props.saveToStore({fname:fname,lname:lname,email:email})
+  
 
    }
 
@@ -101,7 +97,7 @@ class MagazineHome extends Component{
 
 render(){
 
-
+   
     if(this.loadedfaild){
             
         return(
@@ -162,12 +158,14 @@ render(){
     
         )}
     }
+
 }
 
 const mapDispatchToProps=(dispatch)=>{
     return{
         saveToStore:(data)=>dispatch({type:'SaveStore',data:data}),
-        saveToMagazineStore:(data)=>dispatch({type:'MagazineCoverssave',data:data})
+        saveToMagazineStore:(data)=>dispatch({type:'MagazineCoverssave',data:data}),
+        updateProfileUri:(data)=>dispatch({type:'updateProfileUri',data:data}),
     }
 }
 
@@ -177,4 +175,7 @@ const mapStateToProps=(state)=>{
         
     }
 }
+
+
+
 export default connect(mapStateToProps,mapDispatchToProps)(MagazineHome) 

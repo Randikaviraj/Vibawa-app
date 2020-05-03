@@ -153,7 +153,7 @@ class Blogger extends Component{
                                             ?null
                                             : <Text style={{fontSize:30,marginHorizontal:10,marginTop:5,alignSelf:"center"}}>No Result</Text>
                                             }
-                                    <View style={{backgroundColor:'white',width:width,marginTop:5}}>
+                                    <View style={{backgroundColor:'white',width:width,marginTop:5,   marginBottom:115}}>
                                        
                                         <FlatList
                                             data={this.props.datablog.items}

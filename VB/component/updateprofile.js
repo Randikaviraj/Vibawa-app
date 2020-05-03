@@ -161,13 +161,13 @@ getUpdate=async (data)=>{
 
                                     <TextInput style={styles.inputbox}
                                         onChangeText={(val)=>{this.setState({fname:val})}}
-                                        underlineColorAndroid='rgba(0,0,0,0)'
-                                        placeholder="Enter New Frist Name" placeholderTextColor="#ffffff" />
+                                        underlineColorAndroid='black'
+                                        placeholder="Enter New Frist Name" placeholderTextColor="black" />
                                    
                                     <TextInput style={styles.inputbox} 
                                         onChangeText={(val)=>{this.setState({lname:val})}}
-                                        underlineColorAndroid='rgba(0,0,0,0)'
-                                        placeholder="Enter New Last Name" placeholderTextColor="#ffffff"/>
+                                        underlineColorAndroid='black'
+                                        placeholder="Enter New Last Name" placeholderTextColor="black"/>
                                 
                                     <View style={{marginTop:50}}>
                                         <TouchableOpacity style={styles.button} onPress={this.handleUpdate}>
@@ -210,7 +210,7 @@ const styles=StyleSheet.create({
         borderRadius:25,
         fontSize:16,
         paddingHorizontal:16,
-        color:'#ffffff',
+        color:'black',
         marginTop:20,
         padding:10
     },

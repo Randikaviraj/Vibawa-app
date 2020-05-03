@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, StyleSheet, View,Image,Alert,ActivityIndicator} from 'react-native';
+import {TouchableOpacity, StyleSheet, View,Image,Alert,ActivityIndicator,BackHandler} from 'react-native';
 import { AntDesign ,MaterialCommunityIcons} from '@expo/vector-icons';
 import { Audio } from 'expo-av';
 const soundObject = new Audio.Sound();
@@ -20,6 +20,11 @@ export default class App extends React.Component {
         this.volume=0.5
     }
 
+    backAction = () => {
+        
+        return true;
+    };
+
     controlVolumeUp=async()=>{
         if(this.volume+0.1<1 && this.state.playing){
             await soundObject.setVolumeAsync(this.volume+0.1)
@@ -37,6 +42,7 @@ export default class App extends React.Component {
     }
 
     componentDidMount() {
+        BackHandler.addEventListener("hardwareBackPress", this.backAction);
 		Audio.setAudioModeAsync({
 			allowsRecordingIOS: false,
 			interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,

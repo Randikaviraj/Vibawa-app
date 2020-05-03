@@ -8,13 +8,17 @@ const initialState={
     blogdata:{},
     magazineCovers:{},
     magazineCatagory:{},
-    magazineArticles:{}
+    magazineArticles:{},
+    profileuri:null,
 
 }
 
 const reducer=(state=initialState,action)=>{
     var newState={...state}
-    
+    if(action.type==='ProfilcachUri'){
+        
+        newState.profileuri=action.data
+    }
     if(action.type==='SaveStore'){
         
         newState.fname=action.data.fname
@@ -46,6 +50,7 @@ const reducer=(state=initialState,action)=>{
         
         newState.magazineArticles=action.data
     }
+    
 
     return newState
     
