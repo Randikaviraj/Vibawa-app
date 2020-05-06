@@ -88,20 +88,20 @@ class ProfileHome extends Component{
         
     return(
             <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={{flexDirection:'row',paddingTop:40,alignSelf:'center'}}>
+                <View style={{flexDirection:'row',paddingTop:20,alignSelf:'center'}}>
                     <View style={styles.profile}>
                             <ImageUpload email={this.props.email} profileuri={this.props.profileuri}
                                 updateProfileUri={this.props.updateProfileUri}
                             />
                     </View>
 
-                    <View style={{top:50,right:1,width:60,height:60,borderRadius:30,position:'absolute'}}>
+                    <View style={{top:40,right:-25,width:60,height:60,borderRadius:30,position:'absolute'}}>
                         <TouchableOpacity onPress={this.handleMail}>
                             <Ionicons name="ios-chatboxes" size={50} /> 
                         </TouchableOpacity>   
                     </View>
                 </View>
-                <View style={{flexDirection:'column',alignSelf:"center",paddingTop:10,marginTop:40}}>
+                <View style={{flexDirection:'column',alignSelf:"center",paddingTop:5,marginTop:5}}>
                     <Text style={{fontSize:30,fontWeight:'bold',alignSelf:"center",paddingTop:20}} >{this.props.fname}</Text>
                     <Text style={{fontSize:15,alignSelf:"center",color:'grey',paddingTop:10}} >{this.props.lname}</Text>
                     <Text style={{fontSize:15,alignSelf:"center",color:'grey',paddingTop:10}} >

@@ -23,8 +23,9 @@ const store=createStore(rootreducer,applyMiddleware(sagaMiddleware));
 sagaMiddleware.run(watchSaga)
 
 
-const images=[require('./assets/images/mainbackground.jpeg'),
-              require('./assets/images/SidebarBackground.jpg')];
+const images=[require('./assets/images/mainbackground.jpg'),
+              require('./assets/images/SidebarBackground.jpg'),
+              require('./assets/images/Entering_q.jpg')];
 
 export default function App() {
   const [imgloaded,setLoaded]=useState('false');

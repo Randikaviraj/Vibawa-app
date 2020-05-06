@@ -126,7 +126,7 @@ export default class Main extends Component{
                         <Circle r={height+50} cx={width/2}/>
                     </ClipPath>
                     <Image
-                    href={require('../assets/images/mainbackground.jpeg')}
+                    href={require('../assets/images/Entering_q.jpg')}
                     height={height+50} width={width}
                     preserveAspectRatio='xMidYMid  slice'
                     clipPath='url(#id)'

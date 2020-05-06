@@ -127,7 +127,7 @@ router.post('/forgetemail',(req,res)=>{
     service: 'gmail',
     auth: {
         user: 'nilminisenanayakesuba@gmail.com',
-        pass: 'asdk'
+        pass: 'asd'
     }
     });
 

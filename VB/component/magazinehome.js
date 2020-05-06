@@ -3,7 +3,7 @@ import  {View,Text,SafeAreaView,Dimensions,AsyncStorage,BackHandler,Alert,Activi
 import Block from './block'
 import {connect} from 'react-redux'
 import {Foundation } from '@expo/vector-icons';
-
+import * as FileSystem from 'expo-file-system';
 
 
 class MagazineHome extends Component{
@@ -40,9 +40,72 @@ class MagazineHome extends Component{
     const email=await AsyncStorage.getItem('email')
 
     this.props.saveToStore({fname:fname,lname:lname,email:email})
-  
+    this.getCacheprofile(email)
 
    }
+
+
+
+
+   getCacheprofile=async (data)=>{
+ 
+    try{
+         
+    
+          fetch('http://192.168.43.205:3330/user/getfilename',{
+            method:'POST',
+            body: JSON.stringify({ 
+                email:data,
+            }), 
+            headers: { 
+                "Content-type": "application/json; charset=UTF-8",
+                "Accept": "application/json",} 
+              }
+            ).then((res)=>res.json()).then(
+              (res)=>{
+                
+                console.log('filename'+res.filename)
+                var cacheuri='no uri'
+                var today = new Date();
+                var date = today.getFullYear()+'z'+(today.getMonth()+1)+'z'+today.getDate();
+                var time = today.getHours()+'z'+today.getMinutes()+'z'+today.getSeconds();
+                
+                FileSystem.downloadAsync(
+                  `http://192.168.43.205:3330/profilepic/${res.filename}`,
+                  FileSystem.cacheDirectory + `profile${date}${time}${res.filename}`
+                )
+                  .then(({ uri }) => {
+                    
+                    console.log('Finished downloading to ', uri);
+                    this.props.updateProfileUri(uri)
+                    this.setState({profileuri:uri})
+                  })
+                  .catch(error => {
+                    console.error(error);
+                  });
+                  
+            
+            
+            }
+          ).catch((e)=>{
+              console.log(e)
+              
+        })
+      
+              
+         
+           
+    
+    }catch(e){
+        
+        console.log("Error in saga functons  ..............."+e)
+        return ''
+    }
+}
+
+
+
+
 
 
 
@@ -103,6 +166,7 @@ render(){
         return(
             <View style={{flex:1}}>
                 <TouchableOpacity style={{alignContent:'center',alignItems:'center',alignSelf:'center',flexDirection:'row',flex:1}} onPress={()=>{
+                    this.getCacheprofile(this.state.email)
                     this.loadedfaild=false
                     this.setState({isloadingdata:true})
                     }}>
@@ -165,7 +229,7 @@ const mapDispatchToProps=(dispatch)=>{
     return{
         saveToStore:(data)=>dispatch({type:'SaveStore',data:data}),
         saveToMagazineStore:(data)=>dispatch({type:'MagazineCoverssave',data:data}),
-        updateProfileUri:(data)=>dispatch({type:'updateProfileUri',data:data}),
+        updateProfileUri:(data)=>dispatch({type:'ProfilcachUri',data:data}),
     }
 }
 

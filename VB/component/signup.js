@@ -294,7 +294,7 @@ getConfirm=async (data)=>{
                 <View style={styles.main}>
                     <View style={{...StyleSheet.absoluteFill,}} >
                     <Image
-                        source={require('../assets/images/mainbackground.jpeg')}
+                        source={require('../assets/images/mainbackground.jpg')}
                         style={{height:null,width:null,flex:1}}/>
                     </View>
                     <ActivityIndicator style={{alignSelf:'center'}}/>
@@ -310,7 +310,7 @@ getConfirm=async (data)=>{
                                 <StatusBar barStyle='light-content' backgroundColor='black'/>
                                 <View style={{...StyleSheet.absoluteFill,}} >
                                 <Image
-                                        source={require('../assets/images/mainbackground.jpeg')}
+                                        source={require('../assets/images/mainbackground.jpg')}
                                         style={{height:null,width:null,flex:1}}/>
                                 </View>
                                 <View  style={styles.container}>
@@ -398,7 +398,7 @@ getConfirm=async (data)=>{
                                 <View style={styles.main}>
                                     <View style={{...StyleSheet.absoluteFill,}} >
                                         <Image
-                                            source={require('../assets/images/mainbackground.jpeg')}
+                                            source={require('../assets/images/mainbackground.jpg')}
                                             style={{height:null,width:null,flex:1}}/>
                                     </View>
                                     <View  style={styles.container}>
@@ -486,7 +486,7 @@ const styles=StyleSheet.create({
         width:300,
         justifyContent:'center',
         alignItems:'center',
-        backgroundColor:'#000080',
+        backgroundColor:'#660000',
         marginVertical:30,
         paddingVertical:8,
         paddingBottom:13

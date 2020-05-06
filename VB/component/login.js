@@ -202,14 +202,7 @@ export default class Login extends ValidationComponent{
     }
 
     asyncForgetPass=async()=>{
-        const forgetpass=await AsyncStorage.getItem('forgetpass')
-        const email=await AsyncStorage.getItem('email')
-        if(forgetpass==='1'){
-            const num=await AsyncStorage.getItem('num')
-            this.props.navigation.navigate('ForgetPass',{A:1,B:0,num:num,email:email})
-            return
-        }
-        this.props.navigation.navigate('ForgetPass',{A:0,B:1,num:0,email:''})
+        this.props.navigation.navigate('ForgetPass')
     }
 
 
@@ -258,7 +251,7 @@ export default class Login extends ValidationComponent{
                         <View style={styles.main}>
                             <View style={{...StyleSheet.absoluteFill,}} >
                             <Image
-                                source={require('../assets/images/mainbackground.jpeg')}
+                                source={require('../assets/images/mainbackground.jpg')}
                                 style={{height:null,width:null,flex:1}}/>
                             </View>
                             <ActivityIndicator style={{alignSelf:'center'}}/>
@@ -275,7 +268,7 @@ export default class Login extends ValidationComponent{
                                         <StatusBar barStyle='light-content' backgroundColor='black'/>
                                         <View style={{...StyleSheet.absoluteFill,}} >
                                         <Image
-                                                source={require('../assets/images/mainbackground.jpeg')}
+                                                source={require('../assets/images/mainbackground.jpg')}
                                                 style={{height:null,width:null,flex:1}}/>
                                         </View>
                                         
@@ -371,7 +364,7 @@ const styles=StyleSheet.create({
         width:300,
         justifyContent:'center',
         alignItems:'center',
-        backgroundColor:'#000080',
+        backgroundColor:'#660000',
         marginVertical:10,
         paddingVertical:8
 
