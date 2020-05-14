@@ -88,6 +88,11 @@ class ProfileHome extends Component{
         
     return(
             <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={{...StyleSheet.absoluteFill,}} >
+                                        <Image
+                                        source={require('../assets/images/mainbackground.jpg')}
+                                        style={{height:null,width:null,flex:1}}/>
+                                </View>
                 <View style={{flexDirection:'row',paddingTop:20,alignSelf:'center'}}>
                     <View style={styles.profile}>
                             <ImageUpload email={this.props.email} profileuri={this.props.profileuri}
@@ -172,9 +177,9 @@ const styles = StyleSheet.create({
         borderRadius:50,
         color:'blue',
         borderColor:'black',
-        borderWidth:5,
+        borderWidth:3,
         paddingHorizontal:50,
-        backgroundColor:'#e6f2ff',
+        backgroundColor:'rgba(255,255,255,0.3)',
         paddingVertical:8
         
 

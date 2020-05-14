@@ -24,7 +24,7 @@ class Blogger extends Component{
       };
 
 
-    path = 'https://www.googleapis.com/blogger/v3/blogs/6072990315574228729/posts/?key=AIzaSyArAzxYYs9fmVWVTCdR3bD3l5-U0MYiljw'
+    path = 'https://www.googleapis.com/blogger/v3/blogs/6072990315574228729/posts/?maxResults=200&key=AIzaSyArAzxYYs9fmVWVTCdR3bD3l5-U0MYiljw'
     _onChangeSearch = query => {
       this.setState({ searchQuery: query })
       
@@ -41,7 +41,7 @@ class Blogger extends Component{
 
         if((this.state.searchQuery=='' || this.state.searchQuery==null)|| forceUsed==true){
             console.log(forceUsed)
-            this.path = "https://www.googleapis.com/blogger/v3/blogs/6072990315574228729/posts/?key=AIzaSyArAzxYYs9fmVWVTCdR3bD3l5-U0MYiljw"
+            this.path = "https://www.googleapis.com/blogger/v3/blogs/6072990315574228729/posts/?maxResults=200&key=AIzaSyArAzxYYs9fmVWVTCdR3bD3l5-U0MYiljw"
        
           }else{
             console.log(this.state.searchQuery)

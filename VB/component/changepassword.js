@@ -162,17 +162,22 @@ getUpdate=async (data)=>{
                         <KeyboardAwareScrollView  extraScrollHeight={15} enableOnAndroid={true} 
                             keyboardShouldPersistTaps='handled' style={{flex:1}}>
                             <View style={styles.main}>
-                               
+                                <View style={{...StyleSheet.absoluteFill,}} >
+                                        <Image
+                                        source={require('../assets/images/mainbackground.jpg')}
+                                        style={{height:null,width:null,flex:1}}/>
+                                </View>
+                                
                                     <TextInput style={styles.inputbox} 
                                         autoCapitalize='none'
                                         onChangeText={(val)=>{this.setState({password:val})}}
-                                        underlineColorAndroid='black' secureTextEntry={true}
-                                        placeholder="New Password" placeholderTextColor="black"/>
+                                        underlineColorAndroid='rgba(0,0,0,0)' secureTextEntry={true}
+                                        placeholder="New Password" placeholderTextColor="#ffffff"/>
                                      <TextInput style={styles.inputbox} 
                                         autoCapitalize='none'
                                         onChangeText={(val)=>{this.setState({repassword:val})}}
-                                        underlineColorAndroid='black' secureTextEntry={true}
-                                        placeholder="Confirm Password" placeholderTextColor="black"/>
+                                        underlineColorAndroid='rgba(0,0,0,0)' secureTextEntry={true}
+                                        placeholder="Confirm Password" placeholderTextColor="#ffffff"/>
                                         
                                         
                                         <View style={{marginTop:50}}>
@@ -210,7 +215,7 @@ const styles=StyleSheet.create({
    
     inputbox:{
         width:300,
-        backgroundColor:'#ffffcc',
+        backgroundColor:'rgba(255,255,255,0.3)',
         borderRadius:25,
         fontSize:16,
         paddingHorizontal:16,
@@ -230,7 +235,7 @@ const styles=StyleSheet.create({
         width:300,
         justifyContent:'center',
         alignItems:'center',
-        backgroundColor:'#ffe6f2',
+        backgroundColor:'rgba(51, 0, 0, 0.7)',
         marginVertical:5,
         paddingVertical:1,
         paddingBottom:10

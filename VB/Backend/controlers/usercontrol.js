@@ -197,7 +197,7 @@ router.post('/savefilename',(req,res)=>{
 
 router.post('/getfilename',(req,res)=>{
 
-    console.log(req.body.email)
+    
     User.find({email:req.body.email}).then(doc=>{
         if(!_.isEmpty(doc)){
             console.log('get file name'+doc[0].filename)

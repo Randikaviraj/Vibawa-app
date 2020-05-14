@@ -18,6 +18,7 @@ export default class App extends React.Component {
             
         }
         this.volume=0.5
+        this.uri=null
     }
 
     backAction = () => {
@@ -61,7 +62,7 @@ export default class App extends React.Component {
                 return
             }
             
-            await soundObject.loadAsync( { uri: 'https://www.radioking.com/play/bawwa' },{volume: this.volume});
+            await soundObject.loadAsync( { uri: this.uri },{volume: this.volume});
             await soundObject.playAsync();
             this.setState({isloading:false,zpush:1,oppush:1,zplay:0,opplay:0,playing:true,})
         } catch (e) {
@@ -76,10 +77,51 @@ export default class App extends React.Component {
         
     }
 
+    geturl=()=>{
+        fetch('http://192.168.42.127:3330/radio/takeurl',{
+            method:'GET',
+            headers: { 
+                "Content-type": "application/json; charset=UTF-8",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+                
+            
+            } 
+        }
+          ).then((res)=>res.json()).then(
+            (response)=>{
+                if(response.status){
+                    if(response.started){
+                        this.uri=response.url
+                        this.startRadio()
+                    }else{
+                        Alert.alert('Hey..',response.msg,[{text:'Ok'}])
+                        this.setState({isloading:false,zpush:0,oppush:0,zplay:1,opplay:1,playing:false,})
+                        return;
+                    }
+                }else{
+                    Alert.alert('Something Wrong','Check your network connection',[{text:'Ok'}])
+                    this.setState({isloading:false,zpush:0,oppush:0,zplay:1,opplay:1,playing:false,})
+                }
+                
+                
+            }
+        ).catch((err)=>{
+            
+            Alert.alert('Something Wrong','Check your network connection',[{text: 'OK',}])
+            this.setState({isloading:false,zpush:0,oppush:0,zplay:1,opplay:1,playing:false,})
+            }
+        )
+    }
+
     render() {
 
         if(this.state.isloading){
-            this.startRadio()
+            if(!this.uri){
+                this.geturl()
+            }else{
+                this.startRadio()
+            }
+            
          return(  
              
              <View style={styles.container}>

@@ -322,7 +322,7 @@ getConfirm=async (data)=>{
                                     } 
 
                                     <View style={{paddingTop:10}}>
-                                    {this.isFieldInError('fname') && this.getErrorsInField('fname').map(errorMessage => <Text style={{ color:'#ff0000',
+                                    {this.isFieldInError('fname') && this.getErrorsInField('fname').map(errorMessage => <Text style={{ color:'black',
                                         fontSize:12,marginTop:5,alignSelf:'center'}}>{errorMessage}</Text>) } 
                                     </View>
 
@@ -332,7 +332,7 @@ getConfirm=async (data)=>{
                                         placeholder="Frist Name" placeholderTextColor="#ffffff" />
 
                                     <View >
-                                    {this.isFieldInError('lname') && this.getErrorsInField('lname').map(errorMessage => <Text style={{ color:'#ff0000',
+                                    {this.isFieldInError('lname') && this.getErrorsInField('lname').map(errorMessage => <Text style={{ color:'black',
                                         fontSize:12,marginTop:5,alignSelf:'center'}}>{errorMessage}</Text>) } 
                                     </View>
 
@@ -343,7 +343,7 @@ getConfirm=async (data)=>{
                                         placeholder="Last Name" placeholderTextColor="#ffffff"/>
                                 
                                     <View >
-                                    {this.isFieldInError('email') && this.getErrorsInField('email').map(errorMessage => <Text style={{ color:'#ff0000',
+                                    {this.isFieldInError('email') && this.getErrorsInField('email').map(errorMessage => <Text style={{ color:'black',
                                         fontSize:12,marginTop:5,alignSelf:'center'}}>{errorMessage}</Text>) } 
                                     </View>
 
@@ -356,7 +356,7 @@ getConfirm=async (data)=>{
                                         keyboardType='email-address'/>
                                     
                                     <View >
-                                    {this.isFieldInError('password') && this.getErrorsInField('password').map(errorMessage => <Text style={{ color:'#ff0000',
+                                    {this.isFieldInError('password') && this.getErrorsInField('password').map(errorMessage => <Text style={{ color:'black',
                                         fontSize:12,marginTop:5,alignSelf:'center'}}>{errorMessage}</Text>) } 
                                     </View>
 
@@ -367,7 +367,7 @@ getConfirm=async (data)=>{
                                         placeholder="Password" placeholderTextColor="#ffffff"/>
                                     
                                     <View >
-                                    {!(!this.repassworderr) &&  <Text style={{ color:'#ff0000',
+                                    {!(!this.repassworderr) &&  <Text style={{ color:'black',
                                         fontSize:12,marginTop:5,alignSelf:'center'}}>{this.repassworderr}</Text> } 
                                     </View>
                                     <TextInput style={styles.inputbox} 

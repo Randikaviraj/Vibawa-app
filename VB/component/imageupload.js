@@ -188,7 +188,7 @@ render(){
     try{
          
     
-          fetch('http://192.168.43.205:3330/user/getfilename',{
+          fetch('http://192.168.42.127:3330/user/getfilename',{
             method:'POST',
             body: JSON.stringify({ 
                 email:data,
@@ -207,7 +207,7 @@ render(){
                 var time = today.getHours()+'z'+today.getMinutes()+'z'+today.getSeconds();
                 
                 FileSystem.downloadAsync(
-                  `http://192.168.43.205:3330/profilepic/${res.filename}`,
+                  `http://192.168.42.127:3330/profilepic/${res.filename}`,
                   FileSystem.cacheDirectory + `profile${date}${time}${res.filename}`
                 )
                   .then(({ uri }) => {

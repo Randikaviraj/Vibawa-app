@@ -52,7 +52,7 @@ class MagazineHome extends Component{
     try{
          
     
-          fetch('http://192.168.43.205:3330/user/getfilename',{
+          fetch('http://192.168.42.127:3330/user/getfilename',{
             method:'POST',
             body: JSON.stringify({ 
                 email:data,
@@ -71,7 +71,7 @@ class MagazineHome extends Component{
                 var time = today.getHours()+'z'+today.getMinutes()+'z'+today.getSeconds();
                 
                 FileSystem.downloadAsync(
-                  `http://192.168.43.205:3330/profilepic/${res.filename}`,
+                  `http://192.168.42.127:3330/profilepic/${res.filename}`,
                   FileSystem.cacheDirectory + `profile${date}${time}${res.filename}`
                 )
                   .then(({ uri }) => {
@@ -113,7 +113,7 @@ class MagazineHome extends Component{
     this.loadedfaild=false
  
     try{
-             fetch('https://www.googleapis.com/blogger/v3/blogs/4281507632887219271/posts/?key=AIzaSyArAzxYYs9fmVWVTCdR3bD3l5-U0MYiljw',{
+             fetch('https://www.googleapis.com/blogger/v3/blogs/4281507632887219271/posts/?maxResults=100&key=AIzaSyArAzxYYs9fmVWVTCdR3bD3l5-U0MYiljw',{
                 method:'GET',
                 headers: { 
                     "Content-type": "application/json; charset=UTF-8",

@@ -11,7 +11,7 @@ export default function Block(props){
             var patt =  /(http[^\s]+(jpg|jpeg|png|tiff)\b)/;
             var result = patt.exec(image);
             
-            
+            console.log(result)
             if(result[1]){
                 uri=result[1]
             }
@@ -25,14 +25,12 @@ export default function Block(props){
 
     return(
         <View style={{flex:1,paddingHorizontal:10,marginHorizontal:11,marginVertical:10,
-        width:props.width-15}}>
+        width:props.width-15,height:props.height}}>
             <Card style={{flex:1}}>
                 <TouchableOpacity onPress={props.onNav}>
-                    <Card.Cover source={{ uri: uri }} />
+                    <Card.Cover source={{ uri: uri }} style={{ width:props.width-15,height:props.height}} />
                 </TouchableOpacity>
-            <Card.Content>
-                <Title style={{fontSize:15,fontWeight:'500'}}>Card title</Title>
-            </Card.Content>
+        
             </Card>
         </View>
     )

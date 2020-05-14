@@ -67,7 +67,7 @@ class MagazineContent extends Component{
         this.loadedfaild=false
      
         try{
-                 fetch('https://www.googleapis.com/blogger/v3/blogs/3474627695605531696/posts/?key=AIzaSyArAzxYYs9fmVWVTCdR3bD3l5-U0MYiljw',{
+                 fetch('https://www.googleapis.com/blogger/v3/blogs/3474627695605531696/posts/?maxResults=499&key=AIzaSyArAzxYYs9fmVWVTCdR3bD3l5-U0MYiljw',{
                     method:'GET',
                     headers: { 
                         "Content-type": "application/json; charset=UTF-8",
@@ -136,7 +136,7 @@ render(){
         )
     }
     else{
-    
+            // console.log(this.props.datamagazine.items)
             return(
                     
                     <SafeAreaView style={{flex:1}}>
@@ -148,18 +148,19 @@ render(){
                             <FontAwesome5 name='arrow-left' size={40} />
                           </TouchableOpacity>
                             <ScrollView>
+                            <View>
                             <FlatList
                                             horizontal={true}
                                             data={this.props.datamagazine.items}
                                             renderItem={({item})=>(
                                                 
-                                                <Block width={Dimensions.get('window').width/1.8} height={Dimensions.get('window').height/2} title={item.title} content={item.content}
+                                                <Block width={Dimensions.get('window').width/1.8} height={Dimensions.get('window').height/4} title={item.title} content={item.content}
                                                 onNav={this.navgateMagazine}
                                                 />
                                             )}
                                             keyExtractor={(item)=>item.id}
                                         />
-                                <View>
+                                
                                     <FlatList
                                                 nestedScrollEnabled={true}
                                                 data={this.props.dataarticle.items}
