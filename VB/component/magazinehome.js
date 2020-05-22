@@ -151,8 +151,9 @@ class MagazineHome extends Component{
         }
     }
 
-    navgateMagazine=()=>{
-    this.props.navigation.navigate('MagazineContent',{title:'asd',tag:1})
+    navgateMagazine=(indexno)=>{
+        console.log(indexno)
+        this.props.navigation.navigate('MagazineContent',{indexno:indexno})
     
     }
 
@@ -210,6 +211,7 @@ render(){
                                             renderItem={({item})=>(
                                                 
                                                 <Block width={Dimensions.get('window').width/1.4} height={Dimensions.get('window').height/2} title={item.title} content={item.content}
+                                                indexno={parseInt(item.labels[0].split(' ')[1])}
                                                 onNav={this.navgateMagazine}
                                                 />
                                             )}

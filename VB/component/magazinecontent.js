@@ -4,18 +4,19 @@ import Block from './block'
 import SmallBlock from './smallblock'
 import {connect} from 'react-redux'
 import {Foundation,FontAwesome5 } from '@expo/vector-icons';
+import { red } from 'color-name';
 
 class MagazineContent extends Component{
 
     constructor(props){
         super(props);
         this.state={
-            isloadingdata:true
+            isloadingdata:true,
+            catageryno:6
         }
 
         this.loadedfaild=false
-     
-
+        
     }
 
     
@@ -105,6 +106,10 @@ class MagazineContent extends Component{
      
             }
     }
+
+    chooseCatagory=(catageryno)=>{
+        this.setState({catageryno})
+    }
     
 
 render(){
@@ -135,41 +140,74 @@ render(){
             </View>
         )
     }
-    else{
-            // console.log(this.props.datamagazine.items)
+    else{   
+            let magazineno=this.props.navigation.getParam('indexno')
+            //console.log(parseInt(this.props.datamagazine.items[0].labels[0].split(' ')[1]))
             return(
                     
                     <SafeAreaView style={{flex:1}}>
                         <View style={{flex:1}}>
-                            <TouchableOpacity style={{alignContent:'flex-start',alignItems:'center',                  flexDirection:'row',flex:1,padding:30,paddingLeft:10}} 
+                            <TouchableOpacity style={{alignContent:'flex-start',alignItems:'center',                  flexDirection:'row',flex:1,padding:30,paddingLeft:10,paddingBottom:20}} 
                             onPress={()=>{
                                 this.props.navigation.navigate('MagazineHome',{title:'asd',tag:1})
                                 }}>
                             <FontAwesome5 name='arrow-left' size={40} />
                           </TouchableOpacity>
                             <ScrollView>
-                            <View>
-                            <FlatList
-                                            horizontal={true}
-                                            data={this.props.datamagazine.items}
-                                            renderItem={({item})=>(
-                                                
-                                                <Block width={Dimensions.get('window').width/1.8} height={Dimensions.get('window').height/4} title={item.title} content={item.content}
-                                                onNav={this.navgateMagazine}
-                                                />
-                                            )}
-                                            keyExtractor={(item)=>item.id}
-                                        />
-                                
+                                    <View>
+                                        <View style={{paddingBottom:30}}>
+                                            <FlatList
+                                                            horizontal={true}
+                                                            data={this.props.datamagazine.items}
+                                                            renderItem={({item})=>{
+
+                                                                let magazine=parseInt(item.labels[1].split(' ')[1])
+                                                                let catagory=parseInt(item.labels[0].split(' ')[1])
+
+                                                                if(magazineno==magazine){
+                                                                    if(this.state.catageryno==catagory){
+                                                                        return(
+                                                                            <View style={{borderWidth:15,borderColor:'#cb7bed',borderRadius:15,marginHorizontal:5}}>
+                                                                            <Block width={Dimensions.get('window').width/1.8} height={Dimensions.get('window').height/3} title={item.title} content={item.content}
+                                                                            indexno={parseInt(item.labels[0].split(' ')[1])}
+                                                                            onNav={this.chooseCatagory}
+                                                                            />
+                                                                            </View>
+                                                                        )
+                                                                    }else{
+                                                                        return(
+                                                                            <View style={{borderWidth:15,borderColor:'#ffffff',borderRadius:15,marginHorizontal:5}}>
+                                                                            <Block width={Dimensions.get('window').width/1.8} height={Dimensions.get('window').height/3} title={item.title} content={item.content}
+                                                                            indexno={parseInt(item.labels[0].split(' ')[1])}
+                                                                            onNav={this.chooseCatagory}
+                                                                            />
+                                                                            </View>
+                                                                        )
+                                                                    }
+                                                                    
+                                                                }
+                                                                
+                                                            }}
+                                                            keyExtractor={(item)=>item.id}
+                                                        />
+                                        </View>
                                     <FlatList
                                                 nestedScrollEnabled={true}
                                                 data={this.props.dataarticle.items}
-                                                renderItem={({item})=>(
-                                                    <SmallBlock title={item.title} 
-                                                        content={item.content}/>
-                                                )}
+                                                renderItem={({item})=>{
+                                                    let catno=parseInt(item.labels[0].split(' ')[1])
+                                                    
+                                                    if(this.state.catageryno==catno){
+                                                        return(
+                                                            <SmallBlock title={item.title} 
+                                                                content={item.content}/>
+                                                        )
+                                                    }
+                                                    
+                                                }}
                                                 keyExtractor={(item)=>item.id}
                                             />
+                                   
                                 </View>
                                 
                             </ScrollView>

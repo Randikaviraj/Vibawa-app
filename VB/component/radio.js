@@ -127,7 +127,7 @@ export default class App extends React.Component {
              <View style={styles.container}>
                 <View style={{...StyleSheet.absoluteFill,}} >
                     <Image
-                        source={require('../assets/images/radio.jpg')}
+                        source={require('../assets/images/radio.png')}
                         style={{height:null,width:null,flex:1}}/>
                 </View> 
                 <View style={{flexDirection:'row'}}>
@@ -158,7 +158,7 @@ export default class App extends React.Component {
                 <View style={styles.container}>
                    <View style={{...StyleSheet.absoluteFill,}} >
                         <Image
-                            source={require('../assets/images/radio.jpg')}
+                            source={require('../assets/images/radio.png')}
                             style={{height:null,width:null,flex:1}}/>
                     </View> 
                     <View style={{flexDirection:'row'}}>
