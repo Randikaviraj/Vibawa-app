@@ -67,6 +67,7 @@ export default class App extends React.Component {
             this.setState({isloading:false,zpush:1,oppush:1,zplay:0,opplay:0,playing:true,})
         } catch (e) {
             Alert.alert('Something Wrong','Check your network connection',[{text:'Ok'}])
+            this.uri=null
             this.setState({isloading:false,zpush:0,oppush:0,zplay:1,opplay:1,playing:false,})
             console.log(`cannot play the sound file`, e)
         }
@@ -100,6 +101,7 @@ export default class App extends React.Component {
                     }
                 }else{
                     Alert.alert('Something Wrong','Check your network connection',[{text:'Ok'}])
+                    this.uri=null
                     this.setState({isloading:false,zpush:0,oppush:0,zplay:1,opplay:1,playing:false,})
                 }
                 
@@ -108,6 +110,7 @@ export default class App extends React.Component {
         ).catch((err)=>{
             
             Alert.alert('Something Wrong','Check your network connection',[{text: 'OK',}])
+            this.uri=null
             this.setState({isloading:false,zpush:0,oppush:0,zplay:1,opplay:1,playing:false,})
             }
         )

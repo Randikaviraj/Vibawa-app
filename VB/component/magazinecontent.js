@@ -4,7 +4,11 @@ import Block from './block'
 import SmallBlock from './smallblock'
 import {connect} from 'react-redux'
 import {Foundation,FontAwesome5 } from '@expo/vector-icons';
-import { red } from 'color-name';
+import { YellowBox } from 'react-native'
+
+YellowBox.ignoreWarnings([
+    'VirtualizedLists should never be nested', // TODO: Remove when fixed
+  ])
 
 class MagazineContent extends Component{
 
@@ -142,7 +146,7 @@ render(){
     }
     else{   
             let magazineno=this.props.navigation.getParam('indexno')
-            //console.log(parseInt(this.props.datamagazine.items[0].labels[0].split(' ')[1]))
+          
             return(
                     
                     <SafeAreaView style={{flex:1}}>
@@ -167,8 +171,8 @@ render(){
                                                                 if(magazineno==magazine){
                                                                     if(this.state.catageryno==catagory){
                                                                         return(
-                                                                            <View style={{borderWidth:15,borderColor:'#cb7bed',borderRadius:15,marginHorizontal:5}}>
-                                                                            <Block width={Dimensions.get('window').width/1.8} height={Dimensions.get('window').height/3} title={item.title} content={item.content}
+                                                                            <View style={{borderWidth:15,borderColor:'#080140',borderRadius:15,marginHorizontal:5}}>
+                                                                            <Block width={Dimensions.get('window').width/1.5} height={Dimensions.get('window').height/3} title={item.title} content={item.content}
                                                                             indexno={parseInt(item.labels[0].split(' ')[1])}
                                                                             onNav={this.chooseCatagory}
                                                                             />
@@ -176,8 +180,8 @@ render(){
                                                                         )
                                                                     }else{
                                                                         return(
-                                                                            <View style={{borderWidth:15,borderColor:'#ffffff',borderRadius:15,marginHorizontal:5}}>
-                                                                            <Block width={Dimensions.get('window').width/1.8} height={Dimensions.get('window').height/3} title={item.title} content={item.content}
+                                                                            <View style={{borderWidth:10,borderColor:'#ffffff',borderRadius:15,marginHorizontal:5}}>
+                                                                            <Block width={Dimensions.get('window').width/1.6} height={Dimensions.get('window').height/3} title={item.title} content={item.content}
                                                                             indexno={parseInt(item.labels[0].split(' ')[1])}
                                                                             onNav={this.chooseCatagory}
                                                                             />

@@ -8,7 +8,7 @@ const {Radio}=require('../models/radio')
 router.get('/takeurl',(req,res)=>{
     Radio.find({}).then(doc=>{
         if(!_.isEmpty(doc[0])){
-            console.log('get file name'+doc[0].filename)
+            console.log('get file name'+doc[0])
             res.send(JSON.stringify({url : doc[0].url,msg : doc[0].msg,started : doc[0].started,status:true}))
 
         }else{  
@@ -33,12 +33,12 @@ router.post('/upgrade',(req,res)=>{
         if(!_.isEmpty(doc[0])){
             
             console.log('get radi[0] name'+doc[0])
-            Radio.updateMany({}, data, function(err, res) {
+            Radio.updateMany({}, data, function(err,  docs) {
             if (err) {
                 console.log('Eror is in here radio upgrade updateb lock '+err)
                 res.status(400).send('cant upgrade url')
             };
-            console.log(res.result.nModified + " document(s) updated");
+            console.log(docs+ " document(s) updated");
             res.status(200).send('creat new radio and upgrade url')
   });
 

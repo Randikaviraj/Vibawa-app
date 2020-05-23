@@ -7,20 +7,20 @@ import createSagaMiddleware from 'redux-saga'
 
 import Navigation from './navigation/mainstack'
 import reducerA from './reducers/reducerA'
-import watchSaga from './saga/saga'
-import PostInfo from './component/postinfo'
+//import watchSaga from './saga/saga'
 
 
-const sagaMiddleware = createSagaMiddleware()
+
+//const sagaMiddleware = createSagaMiddleware()
 
 
 const rootreducer=combineReducers({
   rA:reducerA,
 
 });
-const store=createStore(rootreducer,applyMiddleware(sagaMiddleware));
+const store=createStore(rootreducer);
 
-sagaMiddleware.run(watchSaga)
+// sagaMiddleware.run(watchSaga)
 
 
 const images=[require('./assets/images/mainbackground.jpg'),
@@ -42,9 +42,7 @@ export default function App() {
     return (
       <Provider store={store}>
       <View style={styles.container}>
-       <Navigation/>
-       {/* <PostInfo/> */}
-      
+       <Navigation/>     
       </View>
       </Provider>
     );

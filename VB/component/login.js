@@ -1,6 +1,6 @@
 import React from 'react';
 import ValidationComponent from 'react-native-form-validator';
-import {StyleSheet,TextInput,View,StatusBar,Dimensions,Image,TouchableOpacity,Text,TouchableWithoutFeedback,Keyboard,Alert,AsyncStorage,ActivityIndicator,} from 'react-native';
+import {StyleSheet,TextInput,View,StatusBar,Dimensions,Image,TouchableOpacity,Text,TouchableWithoutFeedback,Keyboard,Alert,AsyncStorage,ActivityIndicator,Vibration,Platform } from 'react-native';
 import {KeyboardAwareScrollView,} from 'react-native-keyboard-aware-scroll-view'
 import { Notifications } from 'expo';
 import * as Permissions from 'expo-permissions';
@@ -70,7 +70,7 @@ export default class Login extends ValidationComponent{
                 return;
             }
             var token = await Notifications.getExpoPushTokenAsync();
-            console.log('token is..'+token);
+            //console.log('token is..'+token);
             this.sendToken(token);
             } else {
             alert('Must use physical device for Push Notifications');
@@ -94,7 +94,7 @@ export default class Login extends ValidationComponent{
 
     _handleNotification = notification => {
         Vibration.vibrate();
-        console.log(notification);
+        //console.log(notification);
         
     };
 

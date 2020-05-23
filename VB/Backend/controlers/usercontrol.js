@@ -126,8 +126,8 @@ router.post('/forgetemail',(req,res)=>{
     var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'nilminisenanayakesuba@gmail.com',
-        pass: 'asd'
+        user: 'vibawagmai',
+        pass: ''
     }
     });
 
@@ -156,8 +156,8 @@ router.post('/confirmemail',(req,res)=>{
     var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'nilminisenanayakesuba@gmail.com',
-        pass: 'asd'
+        user: 'vibawagmai',
+        pass: ''
     }
     });
 
